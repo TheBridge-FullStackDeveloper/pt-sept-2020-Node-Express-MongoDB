@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const { read, write, loggerError, resError } = require('../utils')
-const { BEERS_DB } = require('../constants')
+const { BEERS_DB, BASE_URL } = require('../constants')
 
 // Service to get all firsts 25 beers
 router.get('/', async (req, res) => {
@@ -107,7 +107,7 @@ router.get('/page/:page/count/:count', async (req, res) => {
 
     const nextPage = () =>
       !beersSegment.length || beersSegment.length < count ?
-        null : `http://localhost:3000/beers/page/${+page + 1}/count/${count}`
+        null : `${BASE_URL}/beers/page/${+page + 1}/count/${count}`
 
     return res.status(200).json({
       success: true,
