@@ -1,29 +1,8 @@
 const express = require('express')
-const fs = require('fs')
 const router = express.Router()
 
+const { read, write, loggerError, resError } = require('../utils')
 const { BEERS_DB } = require('../constants')
-
-const read = async path => {
-  const raw = await fs.readFileSync(path)
-  return JSON.parse(raw)
-}
-
-const write = async (path, content) => {
-  const contentStr = typeof content === 'string' ? content : JSON.stringify(content)
-  await fs.writeFileSync(path, contentStr)
-}
-
-const loggerError = ({ message }, custom) => {
-  console.error(`> ${custom || 'error'}: ${message}`)
-}
-
-const resError = (res, code, message) => {
-  return res.status(code).json({
-    success: false,
-    message: message || 'something went wrong'
-  })
-}
 
 // Service to get all firsts 25 beers
 router.get('/', async (req, res) => {
