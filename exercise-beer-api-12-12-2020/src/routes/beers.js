@@ -89,7 +89,7 @@ router.get("/:id", async (req, res) => {
     }
 })
 
-/* router.get("/page/:page/perPage/:perPage", async (req, res) => {
+ router.get("/page/:page/perPage/:perPage", async (req, res) => {
     try {
         const beersList = await fs.readFileSync(BEERS_DB)
         const beersJson = JSON.parse(beersList)
@@ -115,7 +115,7 @@ router.get("/:id", async (req, res) => {
             message: "something went wrong"
         })
     }
-}) */
+}) 
 
 router.get("/page/:page/nextPage/:next/perPage/:perPage", async (req, res) => {
     try {
