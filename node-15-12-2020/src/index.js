@@ -2,8 +2,9 @@
 // lo asignamos a la constante express
 const express = require('express');
 
-const mainRouter = require('./routes/main');
-const studentsRouter = require('./routes/students');
+const appRouter = require('./routes');
+// Importo los middlewares que quiero usar en las rutas
+const logger = require('./middlewares/logger');
 
 // Invocamos express para crear un servidor listo para usar
 const app = express();
@@ -14,8 +15,7 @@ app.use(express.json());
 // Esto permite a Express parsear los URL query params a objeto en req.query
 app.use(express.urlencoded({ extended: false }));
 // Cuando lanzo una request a http://localhost:PORT entro al router
-app.use('/', mainRouter);
-app.use('/students', studentsRouter);
+app.use('/', logger, appRouter);
 
 // A este middleware entramos siempre que next(err) reciba un Error de JS
 app.use((error, req, res, next) => {

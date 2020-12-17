@@ -1,13 +1,11 @@
 const express = require('express');
 
 const students = require('../db/students.json');
-// Importo los middleware que quiero usar en la ruta
-const logger = require('../middlewares/logger');
 
 const router = express.Router();
 
 // http://localhost:PORT/students?offset=0
-router.get('/', logger, (req, res, next) => {
+router.get('/', (req, res, next) => {
   try {
     // Usando req.query obtengo un objeto con los query params enviados
     // const offset = req.query.offset || 0
