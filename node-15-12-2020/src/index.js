@@ -1,28 +1,4 @@
-// Traemos el paquete "express" de node_modules y
-// lo asignamos a la constante express
-const express = require('express');
-
-const appRouter = require('./routes');
-// Importo los middlewares que quiero usar en las rutas
-const logger = require('./middlewares/logger');
-
-// Invocamos express para crear un servidor listo para usar
-const app = express();
-
-// CONFIGURACIÓN DE APP
-// Esto permite a Express reconocer req.body (usa body-parser)
-app.use(express.json());
-// Esto permite a Express parsear los URL query params a objeto en req.query
-app.use(express.urlencoded({ extended: false }));
-// Cuando lanzo una request a http://localhost:PORT entro al router
-app.use('/', logger, appRouter);
-
-// A este middleware entramos siempre que next(err) reciba un Error de JS
-app.use((error, req, res, next) => {
-  console.log(error);
-  res.status(500).send(error.message);
-});
-// FIN DE CONFIGURACIÓN DE APP
+const app = require('./app');
 
 // LANZAMOS EL SERVIDOR
 const PORT = 4000;
