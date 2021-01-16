@@ -1,0 +1,12 @@
+{
+  "name": "exercise-astronomy-mongodb-16-01-2021",
+  "version": "1.0.0",
+  "description": "## Antes de empezar",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
