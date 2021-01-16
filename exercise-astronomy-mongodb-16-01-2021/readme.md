@@ -1,14 +1,9 @@
 # Instrucciones
 
 ## Antes de empezar
-  1. Crea una base de datos llamada `astronomy`
-  2. Crea las colecciones `neas` y `landings`
-  3. Importa los `json` que se encuentran en `src/seeds/` en sus lugares correspondientes
-    * Si importas a través de mongoimport deberás añadir `--jsonArray` al final del comando
-    ```js
-    mongoimport --db astronomy --collection collectionName --file fileName.json --jsonArray
-    ```
-  4. Instala, con `npm` los paquetes `express`, `mongoose` y `nodemon`
+  1. Instala, con `npm` los paquetes `express`, `mongoose` y `nodemon`
+  2. Especifica la configuración de mongoose para que se conecte correctamente a mongo en `src/configs/db.js`
+  3. Ejecuta el script `npm run seeds`
 
 ## Ejercicio
 
