@@ -19,7 +19,7 @@
   * Ruta base: `http://localhost:3000/astronomy/landings`
 
     1. GET para obtener nombre y masa de todos aquellos meteoritos cuya masa sea igual o superior a una masa (gr) dada (con query parameters)
-    - Ejemplo: `/astronomy/landings/minimum_mass?=200000`
+    - Ejemplo: `/astronomy/landings?minimum_mass=200000`
 
     2. GET para obtener nombre y masa de uno o más meteoritos cuya masa sea la especificada (route params)
     - Ejemplo: `/astronomy/landings/mass/200000`
@@ -28,9 +28,9 @@
     - Ejemplo: `/astronomy/landings/class/L6`
 
     4. GET para obtener nombre, masa y fecha de todos los meteoritos caídos en determinadas fechas de la siguiente manera:
-      * `/astronomy/landings/from?=1960&to?=1990`
-      * `/astronomy/landings/from?=1960`
-      * `/astronomy/landings/to?=1990`
+      * `/astronomy/landings?from=1960&to=1990`
+      * `/astronomy/landings?from=1960`
+      * `/astronomy/landings?to=1990`
       * El mismo endpoint deberá ser compatible con las 3 formas
 
     5. GET para obtener el nombre de la ciudad, país, región o lo que corresponda a partir del nombre del meteorito
@@ -42,12 +42,12 @@
   * Ruta base: `http://localhost:3000/astronomy/neas`
 
     1. GET para obtener la designación y el período anual en base a la clase orbital del asteroide (con query params)
-    - Ejemplo: `/astronomy/neas/class?=aten`
+    - Ejemplo: `/astronomy/neas?class=aten`
 
     2. GET para obtener designación, fecha y período anual de todos los asteroides que cumplan el filtro de fechas dadas
-      * `/astronomy/neas/from?=2010&to?=2015`
-      * `/astronomy/neas/from?=2010`
-      * `/astronomy/neas/to?=2015`
+      * `/astronomy/neas?from=2010&to=2015`
+      * `/astronomy/neas?from=2010`
+      * `/astronomy/neas?to=2015`
       * En este caso, además, podremos poner la fecha más específica si quisiéramos:
         - `YYYY-MM-DD`
         - `YYYY-MM`
@@ -55,7 +55,7 @@
       * El endpoint debe ser compatible con los 3 casos
 
     3. GET para obtener designación, fecha y período anual de todos aquellos asteroides que sean potencialmente peligrosos
-    - Ejemplo: `/astronomy/neas/pha?=1`
+    - Ejemplo: `/astronomy/neas?pha=1`
 
     * Esto se calcula de dos maneras distintas:
       1. El campo `PHA` (potentially hazardous asteroids) deberá contener "Y" en lugar de "N"
@@ -64,15 +64,15 @@
     * Debeis comprobar que ambos puntos se cumplen para poder devolver la información
 
     4. GET para obtener designación, fecha y período anual de todos aquellos asteroides que no sean considerados potencialmente peligrosos. Las fórmulas son las mismas, pero el caso contrario, lógicamente
-    - Ejemplo: `/astronomy/neas/pha?=0`
+    - Ejemplo: `/astronomy/neas?pha=0`
 
     5. GET para obtener designación, fecha y período anual de todos aquellos asteroides cuya potencial peligrosidad (pha) no sea conocida todavía
-    - Ejemplo: `/astronomy/neas/pha?=-1`
+    - Ejemplo: `/astronomy/neas?pha=-1`
 
     6. GET para obtener designación, fecha y período anual de todos aquellos asteroides que cumplan la condición del período anual especificado
-      * `/astronomy/neas/periods/from?=36&to?=900`
-      * `/astronomy/neas/periods/from?=36`
-      * `/astronomy/neas/periods/to?=900`
+      * `/astronomy/neas/periods?from=36&to=900`
+      * `/astronomy/neas/periods?from=36`
+      * `/astronomy/neas/periods?to=900`
       * El endpoint debe ser compatible con las 3 formas
 
 
