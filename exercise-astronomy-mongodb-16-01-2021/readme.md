@@ -4,6 +4,10 @@
   1. Crea una base de datos llamada `astronomy`
   2. Crea las colecciones `neas` y `landings`
   3. Importa los `json` que se encuentran en `src/seeds/` en sus lugares correspondientes
+    * Si importas a través de mongoimport deberás añadir `--jsonArray` al final del comando
+    ```bash
+    mongoimport --db astronomy --collection collectionName --file fileName.json --jsonArray
+    ```
   4. Instala, con `npm` los paquetes `express`, `mongoose` y `nodemon`
 
 ## Ejercicio
@@ -15,7 +19,7 @@
   * Ruta base: `http://localhost:3000/astronomy/landings`
 
     1. GET para obtener nombre y masa de todos aquellos meteoritos cuya masa sea igual o superior a una masa (gr) dada (con query parameters)
-    - Ejemplo: `/astronomy/landings/minimum-mass?=200000`
+    - Ejemplo: `/astronomy/landings/minimum_mass?=200000`
 
     2. GET para obtener nombre y masa de uno o más meteoritos cuya masa sea la especificada (route params)
     - Ejemplo: `/astronomy/landings/mass/200000`
