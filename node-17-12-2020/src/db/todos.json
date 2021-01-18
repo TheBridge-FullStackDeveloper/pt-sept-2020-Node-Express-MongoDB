@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Hacer la cena",
+    "category": 1,
+    "description": "Quiero comer burritos"
+  },
+  {
+    "id": 2,
+    "title": "Correr 100km",
+    "category": 2,
+    "description": "Reventarme las piernas"
+  },
+  {
+    "id": 3,
+    "title": "Ir a un monólogo",
+    "category": 3,
+    "description": "Ver a Dani Rovira"
+  },
+  {
+    "id": 4,
+    "title": "Llorar mientras programo",
+    "category": 4,
+    "description": "Aprender Python en un día"
+  }
+]

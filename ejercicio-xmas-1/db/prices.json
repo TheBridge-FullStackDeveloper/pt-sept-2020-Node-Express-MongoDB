@@ -1,0 +1,38 @@
+[
+  {
+    "present": "coffee",
+    "price": 1
+  },
+  {
+    "present": "holidays",
+    "price": 1000
+  },
+  {
+    "present": "videogames",
+    "price": 40
+  },
+  {
+    "present": "computer",
+    "price": 600
+  },
+  {
+    "present": "tattoo",
+    "price": 30
+  },
+  {
+    "present": "clothes",
+    "price": 80
+  },
+  {
+    "present": "car",
+    "price": 6000
+  },
+  {
+    "present": "phone",
+    "price": 800
+  },
+  {
+    "present": "motorbike",
+    "price": 3500
+  }
+]

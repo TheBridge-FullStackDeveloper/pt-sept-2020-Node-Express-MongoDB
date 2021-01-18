@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Sol",
+    "presents": ["coffee", "holidays"]
+  },
+  {
+    "name": "Molpe",
+    "presents": ["coffee", "videogames"]
+  },
+  {
+    "name": "Zineb",
+    "presents": ["computer", "tattoo"]
+  },
+  {
+    "name": "David",
+    "presents": ["clothes", "car"]
+  },
+  {
+    "name": "Dani",
+    "presents": ["clothes", "videogames"]
+  },
+  {
+    "name": "Elisa",
+    "presents": ["phone", "holidays"]
+  },
+  {
+    "name": "Fernando",
+    "presents": ["motorbike", "computer"]
+  },
+  {
+    "name": "Silvia",
+    "presents": ["phone", "motorbike"]
+  },
+  {
+    "name": "Isabel",
+    "presents": ["tattoo", "car"]
+  }
+]

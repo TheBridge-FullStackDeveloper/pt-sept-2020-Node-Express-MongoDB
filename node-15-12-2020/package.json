@@ -1,0 +1,26 @@
+{
+  "name": "node-express-server",
+  "version": "1.0.0",
+  "description": "Basic Express server",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "keywords": [
+    "server",
+    "node",
+    "express",
+    "javascript"
+  ],
+  "author": "The Bridge",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
