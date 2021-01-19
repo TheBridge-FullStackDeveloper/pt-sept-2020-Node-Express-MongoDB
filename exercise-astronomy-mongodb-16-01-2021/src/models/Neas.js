@@ -1,19 +1,19 @@
-const mongoose = require('mongoose')
-const { Schema } = mongoose
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const NeasSchema = new Schema({
   designation: String,
-  discovery_date: Date,
-  h_mag: Number,
-  moid_au: Number,
-  q_au_1: Number,
-  q_au_2: Number,
-  period_yr: Number,
-  i_deg: Number,
+  discoveryDate: Date,
+  hMag: Number,
+  moidAu: Number,
+  qAu1: Number,
+  qAu2: Number,
+  periodYr: Number,
+  iDeg: Number,
   pha: String,
-  orbit_class: String
-})
+  orbitClass: String,
+});
 
-const model = mongoose.model('Neas', NeasSchema)
+const model = mongoose.model('Neas', NeasSchema);
 
-module.exports = model
+module.exports = model;
