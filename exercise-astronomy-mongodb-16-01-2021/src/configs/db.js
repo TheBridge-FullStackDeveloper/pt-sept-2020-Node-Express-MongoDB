@@ -4,7 +4,12 @@ const mongoose = require('mongoose');
 const DB_URI = 'mongodb://localhost:27017/astronomy';
 
 mongoose
-  .connect(DB_URI)
+  .connect(DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
   .then(() => {
     console.info('Connected to DB!');
   })
@@ -16,3 +21,5 @@ process.on('SIGINT', () => {
     process.exit(0);
   });
 });
+
+module.exports = mongoose;

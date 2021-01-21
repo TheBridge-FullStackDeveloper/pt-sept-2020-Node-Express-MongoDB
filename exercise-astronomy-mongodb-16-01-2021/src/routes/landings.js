@@ -1,5 +1,6 @@
 const route = require('express').Router();
 
+const isAuthenticated = require('../middlewares/isAuthenticated');
 const Landings = require('../models/Landings');
 
 // Endpoints relativos a Landings
@@ -7,9 +8,9 @@ const Landings = require('../models/Landings');
 // Recuperamos name, mass y year. Filtramos por ?from=2005&to=2010
 // req.query = {
 //   from: 2005,
-//   to: 2010 
+//   to: 2010
 // }
-route.get('/', async (req, res, next) => {
+route.get('/', [isAuthenticated], async (req, res, next) => {
   try {
     const from = req.query.from;
     const to = req.query.to;

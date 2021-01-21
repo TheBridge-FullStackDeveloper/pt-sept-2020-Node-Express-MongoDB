@@ -15,6 +15,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    default: 'basic',
+    enum: ['basic', 'admin', 'superadmin'],
+  },
 });
 
 // 2. Creo el modelo y lo exporto

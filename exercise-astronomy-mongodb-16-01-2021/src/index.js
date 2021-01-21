@@ -1,7 +1,8 @@
 const express = require('express');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
-require('./configs/db');
+const mongoose = require('./configs/db');
 const passport = require('./configs/passport');
 const routeMiddleware = require('./routes');
 
@@ -16,6 +17,10 @@ app.use(
     resave: true,
     saveUninitialized: false,
     secret: 'o387dh_*p2n8aywbeofna',
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 60 * 60 * 24 * 4, // 60 segundos * 60 minutos * 24 horas * 4 días => 4 días de sesión
+    }),
   })
 );
 app.use(passport.initialize());
