@@ -1,7 +1,7 @@
 // Aquí configuración de conexión a la base de datos
 const mongoose = require('mongoose');
 
-const DB_URI = 'mongodb://localhost:27017/astronomy';
+const DB_URI = 'mongodb://localhost:27017/rpgdb';
 
 mongoose
   .connect(DB_URI)

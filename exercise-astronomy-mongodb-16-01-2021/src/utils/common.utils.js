@@ -6,7 +6,10 @@ const camelize = (str) =>
     .map((word, index) => (index > 0 ? capitalize(word) : word))
     .join('');
 
+const isInvalidDate = (date) => Number.isNaN(date.getTime());
+
 module.exports = {
   capitalize,
   camelize,
+  isInvalidDate,
 };
