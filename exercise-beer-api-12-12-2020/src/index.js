@@ -11,8 +11,6 @@ app.use(bodyParser.json())
 
 // We need create app.use with basic route and previously required beers routes module
 // ...
-
-
 app.use("/beers", beersRoute)
 
 app.listen(SERVER_PORT, () => {

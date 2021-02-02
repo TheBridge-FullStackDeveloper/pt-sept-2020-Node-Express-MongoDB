@@ -34,7 +34,7 @@ router.get("/", async (req, res) => {
             success: true,
             data: filteredList
         })
-    } catch {
+    } catch(error) {
         return res.status(500).json({
             success: false,
             message: "something went wrong"
@@ -54,7 +54,7 @@ router.get("/random", async (req, res) => {
             data: beersJson[random]
         })
 
-    } catch {
+    } catch(error) {
         return res.status(500).jason({
             success: false,
             message: "something went wrong"
@@ -81,7 +81,7 @@ router.get("/:id", async (req, res) => {
             data: filteredById
         })
 
-    } catch {
+    } catch(error) {
         return res.status(500).json({
             success: false,
             message: "something went wrong"
@@ -89,7 +89,7 @@ router.get("/:id", async (req, res) => {
     }
 })
 
- router.get("/page/:page/perPage/:perPage", async (req, res) => {
+/*  router.get("/page/:page/perPage/:perPage", async (req, res) => {
     try {
         const beersList = await fs.readFileSync(BEERS_DB)
         const beersJson = JSON.parse(beersList)
@@ -115,59 +115,38 @@ router.get("/:id", async (req, res) => {
             message: "something went wrong"
         })
     }
-}) 
-
-router.get("/page/:page/nextPage/:next/perPage/:perPage", async (req, res) => {
+})  */
+const getPages = (totalBeers, amountPerPage) => Math.floor(totalBeers.length / amountPerPage);
+router.get("/page/:page/perPage/:perPage", async (req, res) => {
     try {
         const beersList = await fs.readFileSync(BEERS_DB)
         const beersJson = JSON.parse(beersList)
-
-       /*  const filteredBeers= beersJson.filter((beer) => {
-            next = +req.params.next
-
-            page = +req.params.page
-
-            perPage = +req.params.perPage
-        
-
-            page = (perPage * (next-1)) / perPage
-            let z = perPage * (next-1)
-            let y = z - perPage
-
-            const perPageBeer = beer.slice(y, z)
-
-            return perPageBeer
-        }) */
-        next = +req.params.next 
-
         page = +req.params.page
-
         perPage = +req.params.perPage
 
+        page = (perPage * page) / perPage
+        let endIndex = perPage * page
+        let startIndex = endIndex - perPage
 
-        next = next+1
-         page = (perPage * page) / perPage
-        let z = perPage * page
-        let y = z - perPage
+        const perPageBeer = beersJson.slice(startIndex, endIndex)
+       
+        const nextPage = page + 1 
 
+        console.log(">data :", perPageBeer)
 
-        const perPageBeer = beersJson.slice(y, z)
-
-
-        console.log(">valor next :", next)
-
-        return res.status(200).json({
+       res.status(200).json({
             success: true,
-            data: perPageBeer
+            data: perPageBeer,
+            next: `http://${req.headers.host}/beers?page=${nextPage}&perPage=${perPage}`,
 
         })
-    } catch {
-        return res.status(500).json({
+    } catch(error) {
+             res.status(500).json({
             success: false,
             message: "something went wrong"
         })
     }
-})
+}) 
 
 
 module.exports = router

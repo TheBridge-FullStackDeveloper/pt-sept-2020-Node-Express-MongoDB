@@ -4,20 +4,35 @@ const router = express.Router()
 
 const PHONE_DB = 'src/dbs/phones.json'
 
-router.get('/', (req, res) => {
-  fs.readFile(PHONE_DB, function (err, data) {
-    if (!err) {
-      res.status(200).json({
-        success: true,
-        data: JSON.parse(data)
-      })
-    } else {
-      res.status(500).json({
-        success: false,
-        message: 'something went wrong'
-      })
-    }
-  })
+router.get('/', async (req, res) => {
+  // fs.readFile(PHONE_DB, function (err, data) {
+  //   if (!err) {
+  //     res.status(200).json({
+  //       success: true,
+  //       data: JSON.parse(data)
+  //     })
+  //   } else {
+  //     res.status(500).json({
+  //       success: false,
+  //       message: 'something went wrong'
+  //     })
+  //   }
+  // })
+  try {
+    const rawFileContent = await fs.readFileSync(PHONE_DB)
+
+    return res.status(200).json({
+      success: true,
+      data: JSON.parse(rawFileContent)
+    })
+  } catch(error) {
+    console.error('> error retrieving phones list: ', error.message)
+
+    return res.status(500).json({
+      success: false,
+      message: 'something went wrong'
+    })
+  }
 })
 
 // REGISTER CON CALLBACKS
