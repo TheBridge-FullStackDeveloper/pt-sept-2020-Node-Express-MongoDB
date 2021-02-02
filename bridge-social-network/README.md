@@ -47,3 +47,12 @@ interface PopulateOptions {
   justOne?: boolean;
 }
 ```
+
+## Authentication
+
+1. Instalar dependencias necesarias:
+
+```
+npm install cookie-session cors dotenv passport passport-local
+```
+
