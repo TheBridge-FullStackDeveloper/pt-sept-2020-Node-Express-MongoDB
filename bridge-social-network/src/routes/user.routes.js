@@ -3,19 +3,23 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
 const { isValidPassword, throwError } = require('../utils/common.utils');
+const { isLoggedIn } = require('../middlewares/auth.middleware');
 
 const router = express.Router();
 
-router.get('/:userId', async (req, res, next) => {
-  const { userId } = req.params;
+router.get('/profile', [isLoggedIn], async (req, res, next) => {
+  // Como ahora tenemos authentication podemos sacar el user de req.user cuando esté logeado
+  const id = req.user._id;
 
-  if (!userId) {
-    return throwError('Invalid or missing id', 422)(next);
-  }
+  // Este código lo usábamos para carga la información antes de tener auth
+  // const { userId } = req.params;
+  // if (!userId) {
+  //   return throwError('Invalid or missing id', 422)(next);
+  // }
 
   try {
     // Con populate me traigo los documentos de la DB que tengan esas ids del array
-    const user = await User.findById(userId).populate([
+    const user = await User.findById(id).populate([
       {
         path: 'follows',
         select: {
@@ -71,6 +75,7 @@ router.get('/:userId', async (req, res, next) => {
   }
 });
 
+// POST DE REGISTRO TEMPORAL ⏰
 router.post('/', async (req, res, next) => {
   const { username, alias, email, password, bio } = req.body;
 
