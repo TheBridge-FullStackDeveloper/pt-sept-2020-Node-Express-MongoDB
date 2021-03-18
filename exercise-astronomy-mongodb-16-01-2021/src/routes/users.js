@@ -259,6 +259,8 @@ route.put("/:afilNum/necs", async (req, res, next) => {
     const badgesData = result.get("badges");
     let count = 0;
     console.log("badgesData=>", badgesData);
+    // Quitar el último elemento de la lista de badges
+    // Función every
     badgesData.forEach((ele, index) => {
       const l = badgesData.length;
       ele.given === true ? (count = count + 1) : count;
